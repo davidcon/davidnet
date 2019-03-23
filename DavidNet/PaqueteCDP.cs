@@ -124,7 +124,7 @@ namespace DavidNet
                             this.platform = System.Text.Encoding.ASCII.GetString(datos);
                             break;
                         case 7:
-                            //Abria que modificarlo para sacar mejor informacion
+                            //Habría que modificarlo para sacar mejor informacion
                             //Se puede obtener la ip de la puerta de enlace
                             this.ipPrefix = System.Text.Encoding.ASCII.GetString(datos);
                             break;
