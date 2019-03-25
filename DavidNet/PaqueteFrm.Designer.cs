@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaqueteFrm));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.BtCerrar = new System.Windows.Forms.Button();
@@ -36,27 +37,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Location = new System.Drawing.Point(6, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 13);
+            this.label1.Size = new System.Drawing.Size(52, 20);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Paquete Recibido Completo";
+            this.label1.Text = "About";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(4, 20);
+            this.textBox1.Location = new System.Drawing.Point(6, 31);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(274, 103);
+            this.textBox1.Size = new System.Drawing.Size(409, 156);
             this.textBox1.TabIndex = 1;
             // 
             // BtCerrar
             // 
-            this.BtCerrar.Location = new System.Drawing.Point(104, 129);
+            this.BtCerrar.Location = new System.Drawing.Point(156, 198);
+            this.BtCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtCerrar.Name = "BtCerrar";
-            this.BtCerrar.Size = new System.Drawing.Size(75, 23);
+            this.BtCerrar.Size = new System.Drawing.Size(112, 35);
             this.BtCerrar.TabIndex = 2;
             this.BtCerrar.Text = "Cerrar";
             this.BtCerrar.UseVisualStyleBackColor = true;
@@ -65,13 +69,15 @@
             // PaqueteFrm
             // 
             this.AcceptButton = this.BtCerrar;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(282, 158);
+            this.ClientSize = new System.Drawing.Size(423, 243);
             this.Controls.Add(this.BtCerrar);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PaqueteFrm";

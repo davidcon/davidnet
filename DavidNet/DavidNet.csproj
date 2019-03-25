@@ -40,10 +40,11 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -52,7 +53,7 @@
     </Win32Resource>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>red-de-contactos-icono-5790.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\red-de-contactos-icono-5790.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PcapDotNet.Base">
@@ -84,6 +85,12 @@
       <DependentUpon>DavidNetFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="PaqueteCDP.cs" />
+    <Compile Include="AboutFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutFrm.Designer.cs">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PaqueteFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,23 +99,27 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SnifferCDP.cs" />
     <Compile Include="WMIHelper.cs" />
     <EmbeddedResource Include="DavidNetFrm.resx">
       <DependentUpon>DavidNetFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AboutFrm.resx">
+      <DependentUpon>AboutFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PaqueteFrm.resx">
       <DependentUpon>PaqueteFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -140,7 +151,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="red-de-contactos-icono-5790.ico" />
+    <Content Include="Resources\red-de-contactos-icono-5790.ico" />
+    <None Include="Resources\iconfinder_mail.png" />
+    <None Include="Resources\iconfinder_github.png" />
+    <None Include="Resources\iconfinder_linkedin.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

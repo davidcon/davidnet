@@ -12,23 +12,39 @@ namespace DavidNet
 {
     enum TypeData
     {
-
+        IdDevice = 1,
+        SwitchAdress = 2,
+        Port = 3,
+        Capabilites = 4,
+        SoftwareVersion = 5,
+        Platform = 6,
+        IpPrefix = 7,
+        Domain = 9,
+        VLAN = 10,
+        FullDuplex = 11,
+        VoIp = 14,
+        TrustBitMap = 18,
+        UntrustedPortCos = 19,
+        ManagementoAddress = 22,
+        PowerAvailable = 26,
+        SpearPairPoE = 31
     }
+
     public class PaqueteCDP
     {
-        private string idDevice;
-        private string softwareVersion;
-        private string platform;
-        private string switchAddress;
-        private string port;
-        private string capabilities;
-        private string ipPrefix;
-        private string domain;
-        private string vLan;
-        private string bufferStr;
-        private bool fullDuplex;
-        private string voIp;
-        private bool powerAvailable;
+        private string idDevice = "";
+        private string softwareVersion = "";
+        private string platform = "";
+        private string switchAddress = "";
+        private string port = "";
+        private string capabilities = "";
+        private string ipPrefix = "";
+        private string domain = "";
+        private string vLan = "";
+        private string bufferStr = "";
+        private bool fullDuplex = false;
+        private string voIp = "";
+        private bool powerAvailable = false;
         //private struct campoDatos
         //{
         //    public byte[] type;
@@ -75,6 +91,7 @@ namespace DavidNet
             {
                 aux = pBuffer.ReadBytes(i,2);
                 type = Convert.ToInt32(aux[1]);
+                int extraType = Convert.ToInt32(aux[0]);
                 //transfomamos los bytes i+2 e i+3 en decimal
 
                 //length = (Convert.ToInt32(p.Buffer[i + 2]) * 16) + Convert.ToInt32(p.Buffer[i + 3]);
@@ -92,62 +109,95 @@ namespace DavidNet
                 {
                     //obtenemos la cadena desde i+4 hasta length pero restamos los dos bytes de type y los dos bytes de length
                     datos = pBuffer.ReadBytes(i + 4, length - 4);
-                    switch (type)
+                    if (extraType == 0)
                     {
-                        //ID IdDevice
-                        case 1:
-                            this.idDevice = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        //IP Address
-                        //Cogemos la ultima dirección del bloque
-                        case 2:
-                            this.switchAddress = "";
-                            for (int idatos = datos.Length - 4; idatos < datos.Length; idatos++)
-                            {
-                                this.switchAddress += datos[idatos].ToString();
-                                if (idatos != datos.Length - 1)
+                        switch (type)
+                        {
+                            //ID IdDevice
+                            case 1:
+                                this.idDevice = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            //IP Address
+                            //Cogemos la ultima dirección del bloque
+                            case 2:
+                                this.switchAddress = "";
+                                for (int idatos = datos.Length - 4; idatos < datos.Length; idatos++)
                                 {
-                                    this.switchAddress += ":";
+                                    this.switchAddress += datos[idatos].ToString();
+                                    if (idatos != datos.Length - 1)
+                                    {
+                                        this.switchAddress += ":";
+                                    }
                                 }
-                            }
-                            break;
-                        case 3:
-                            this.port = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 4:
-                            this.capabilities = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 5:
-                            this.softwareVersion = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 6:
-                            this.platform = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 7:
-                            //Habría que modificarlo para sacar mejor informacion
-                            //Se puede obtener la ip de la puerta de enlace
-                            this.ipPrefix = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 9:
-                            this.domain = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 10:
-                            this.vLan = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 11:
-                            if (System.Text.Encoding.ASCII.GetString(datos) == "1")
-                                this.fullDuplex = true;
-                            else
-                                this.fullDuplex = false;
-                            break;
-                        case 14:
-                            this.voIp = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        case 26:
-                            //this.powerAvailable = System.Text.Encoding.ASCII.GetString(datos);
-                            break;
-                        default:
-                            break;
+                                break;
+                            case 3:
+                                this.port = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 4:
+                                this.capabilities = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 5:
+                                this.softwareVersion = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 6:
+                                this.platform = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 7:
+                                //Habría que modificarlo para sacar mejor informacion
+                                //Se puede obtener la ip de la puerta de enlace
+                                this.ipPrefix = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 9:
+                                this.domain = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 10:
+                                //Hay que convertirlo a entero
+                                this.vLan = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 11:
+                                //No hay que hacer una comparación con string hay que hacerla con exadecimal 0x01
+                                if (System.Text.Encoding.ASCII.GetString(datos) == "1")
+                                    this.fullDuplex = true;
+                                else
+                                    this.fullDuplex = false;
+                                break;
+                            case 14:
+                                this.voIp = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 18:
+                                //this.trustBitmap = System.Text.Encoding.ASCII.GetString(datos);
+                                break;
+                            case 19:
+                                //untrustedPortCos
+                                break;
+                            case 22:
+                                //managementAddress
+                                break;
+                            case 26:
+                                //this.powerAvailable = System.Text.Encoding.ASCII.GetString(datos);
+                                //Tiene una estructura en tres partes
+                                break;
+                            case 31:
+                                //Spear Pair PoE
+                                //Tiene una estructura en binario
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (type)
+                        {
+                            case 4:
+                                //Unknown data
+                                break;
+                            case 3:
+                                //Radio 1 channel
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
                 //la longitud de los datos incluye 2bytes para type y 2bytes para length

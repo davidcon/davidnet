@@ -188,5 +188,10 @@ namespace DavidNet
             this.Refrescar();
         }
 
+        private void BtAbout_Click(object sender, EventArgs e)
+        {
+            AboutFrm acercaDe = new AboutFrm("");
+            acercaDe.ShowDialog();
+        }
     }
 }

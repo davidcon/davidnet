@@ -49,6 +49,7 @@
             this.resultLabel = new System.Windows.Forms.Label();
             this.resultLinkLabel = new System.Windows.Forms.LinkLabel();
             this.BtLoad = new System.Windows.Forms.Button();
+            this.BtAbout = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -71,9 +72,9 @@
             // 
             // BtIniciar
             // 
-            this.BtIniciar.Location = new System.Drawing.Point(32, 222);
+            this.BtIniciar.Location = new System.Drawing.Point(6, 222);
             this.BtIniciar.Name = "BtIniciar";
-            this.BtIniciar.Size = new System.Drawing.Size(75, 22);
+            this.BtIniciar.Size = new System.Drawing.Size(66, 22);
             this.BtIniciar.TabIndex = 2;
             this.BtIniciar.Text = "Iniciar";
             this.BtIniciar.UseVisualStyleBackColor = true;
@@ -81,9 +82,9 @@
             // 
             // BtParar
             // 
-            this.BtParar.Location = new System.Drawing.Point(113, 222);
+            this.BtParar.Location = new System.Drawing.Point(77, 222);
             this.BtParar.Name = "BtParar";
-            this.BtParar.Size = new System.Drawing.Size(75, 22);
+            this.BtParar.Size = new System.Drawing.Size(66, 22);
             this.BtParar.TabIndex = 3;
             this.BtParar.Text = "Parar";
             this.BtParar.UseVisualStyleBackColor = true;
@@ -220,19 +221,30 @@
             // 
             // BtLoad
             // 
-            this.BtLoad.Location = new System.Drawing.Point(194, 221);
+            this.BtLoad.Location = new System.Drawing.Point(148, 222);
             this.BtLoad.Name = "BtLoad";
-            this.BtLoad.Size = new System.Drawing.Size(75, 23);
+            this.BtLoad.Size = new System.Drawing.Size(66, 22);
             this.BtLoad.TabIndex = 8;
             this.BtLoad.Text = "Load File";
             this.BtLoad.UseVisualStyleBackColor = true;
             this.BtLoad.Click += new System.EventHandler(this.BtLoad_Click);
+            // 
+            // BtAbout
+            // 
+            this.BtAbout.Location = new System.Drawing.Point(219, 222);
+            this.BtAbout.Name = "BtAbout";
+            this.BtAbout.Size = new System.Drawing.Size(76, 22);
+            this.BtAbout.TabIndex = 9;
+            this.BtAbout.Text = "Acerca de ...";
+            this.BtAbout.UseVisualStyleBackColor = true;
+            this.BtAbout.Click += new System.EventHandler(this.BtAbout_Click);
             // 
             // DavidNetFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(301, 250);
+            this.Controls.Add(this.BtAbout);
             this.Controls.Add(this.BtLoad);
             this.Controls.Add(this.resultLinkLabel);
             this.Controls.Add(this.resultLabel);
@@ -248,7 +260,7 @@
             this.MinimizeBox = false;
             this.Name = "DavidNetFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "David - NetTool";
+            this.Text = "David Conde - NetTool";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DavidNetFrm_FormClosed);
             this.Load += new System.EventHandler(this.DavidNetFrm_Load);
             this.groupBox1.ResumeLayout(false);
@@ -280,5 +292,6 @@
         private System.Windows.Forms.Label resultLabel;
         private System.Windows.Forms.LinkLabel resultLinkLabel;
         private System.Windows.Forms.Button BtLoad;
+        private System.Windows.Forms.Button BtAbout;
     }
 }

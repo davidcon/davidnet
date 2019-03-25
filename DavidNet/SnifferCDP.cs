@@ -37,22 +37,6 @@ namespace DavidNet
         {
             //Obtenemos la lista de tarjetas de red
             this.allDevices = LivePacketDevice.AllLocalMachine;
-            
-            // Filtro las tarjetas de red
-            // Creamos una copia de alldevices
-            // En la lista añadimos solo las tarjetas que no tengan la palabra Microsoft
-            //foreach (LivePacketDevice LaTarjeta in LivePacketDevice.AllLocalMachine)
-            //{
-                
-            //}
-            //for (int i = 0; i < this.allDevices.Count; i++)
-            //{
-            //    if (!this.allDevices[i].Description.Contains("Microsoft"))
-            //    {
-            //        newDevices.Add(this.allDevices[i]);
-            //    }
-            //}
-            //this.allDevices = newDevices;
         }
 
         /// <summary>
@@ -135,7 +119,21 @@ namespace DavidNet
         {
             get
             {
-                
+                // Filtro las tarjetas de red
+                // Creamos una copia de alldevices
+                // En la lista añadimos solo las tarjetas que no tengan la palabra Microsoft
+                //foreach (LivePacketDevice LaTarjeta in LivePacketDevice.AllLocalMachine)
+                //{
+
+                //}
+                //for (int i = 0; i < this.allDevices.Count; i++)
+                //{
+                //    if (!this.allDevices[i].Description.Contains("Microsoft"))
+                //    {
+                //        newDevices.Add(this.allDevices[i]);
+                //    }
+                //}
+                //this.allDevices = newDevices;
                 if (this.allDevices == null)
                 {
                     //Si no hay ninguna tarjeta reportamos error!
@@ -317,8 +315,6 @@ namespace DavidNet
             }
         }
 
-  
-
         /// <summary>
         /// This function build an Ethernet with payload packet.
         /// </summary>
@@ -396,10 +392,11 @@ namespace DavidNet
             else
             {
                 //Cambio de nombre de etiqueta!!!
-                
+                //Aquí podemos añadir otros protocolos, antes habrá que generar una clase nueva
             }
 
         }
+
         /// <summary>
         /// Enable DHCP on the NIC
         /// </summary>
